@@ -71,8 +71,8 @@
         },
         {
           "name": "Bid levelling",
-          "status": "available",
-          "notes": "Same as BuildingConnected, with ongoing investment to expand capabilities."
+          "status": "partial",
+          "notes": "Work still ongoing to provide functionality such as private attachments, toggling alternates, and displaying quals data. Plan is to exceed the functionality of BuildingConnected."
         },
         {
           "name": "Reports",
