@@ -1,12 +1,12 @@
 {
   "title": "BuildingConnected Pro → Forma Bid",
-  "subtitle": "Feature availability tracker",
+  "subtitle": "Unofficial feature availability tracker",
   "introduction": "This page tracks the availability of BuildingConnected Pro functionality inside Forma Bid. The majority of project-level functionality is available today, with several improvements. Your existing BuildingConnected data is the same data in Forma — both products can be used simultaneously, and all of your BuildingConnected data is accessible within Forma. Features marked \"Improved\" or \"New\" represent capabilities that go beyond what was available in BuildingConnected Pro.\nNote: the term \"RFP\" is used in place of \"BuildingConnected Project\" to separate bidding efforts from the Forma project.",
   "tables": [
     {
       "id": "project",
       "title": "Project-Based Functionality",
-      "description": "This is where we focused our initial efforts. We have almost all project based functionality available in Forma.",
+      "description": "Forma Bid has almost all project-based functionality available, with several improvements over BuildingConnected Pro.",
       "features": [
         {
           "name": "Creating & managing RFPs (BuildingConnected projects)",
@@ -108,14 +108,14 @@
         {
           "name": "Indirect Project Costs",
           "status": "not-planned",
-          "notes": "Not on the roadmap. If you use this feature, we recommend investigating Forma Estimate."
+          "notes": "Not on the roadmap. Forma Estimate is recommended as an alternative."
         }
       ]
     },
     {
       "id": "account",
       "title": "Account & Company Functionality",
-      "description": "Forma Bid uses the same network as BuildingConnected. While the data is available for consumption, we are still working on making it possible for you to manage that data natively within Forma.",
+      "description": "Forma Bid uses the same network as BuildingConnected. While the data is available for consumption, native management of that data within Forma Bid is still in development.",
       "features": [
         {
           "name": "Network Suggested Edits",
@@ -125,7 +125,7 @@
         {
           "name": "Profile Management",
           "status": "coming-soon",
-          "notes": "We're working to provide the ability to manage your profile natively within Forma. You can continue to use BuildingConnected for this functionality."
+          "notes": "Native profile management within Forma Bid is coming. BuildingConnected remains available for this functionality in the meantime."
         },
         {
           "name": "Builder's Network Employee Management",
@@ -142,37 +142,37 @@
     {
       "id": "cross-project",
       "title": "Cross-Project Functionality",
-      "description": "The below functionality remains functional inside of BuildingConnected. Whether you are using Forma Bid Board or still using BuildingConnected Pro, we are working to find a scalable way to integrate these multi-project pieces of functionality into the greater Forma platform.",
+      "description": "The below functionality remains available inside BuildingConnected. Forma Bid does not yet support these cross-project capabilities, though they are being evaluated for the broader Forma platform.",
       "features": [
         {
           "name": "Global Network Search",
           "status": "not-available",
-          "notes": "This refers to the free-form search field in the top navigation in BuildingConnected. We already support network search in the bidder invite flow."
+          "notes": "This refers to the free-form search field in the top navigation in BuildingConnected. Forma Bid already supports network search within the bidder invite flow."
         },
         {
           "name": "Managing templates",
           "status": "not-available",
-          "notes": "We are actively investigating the best way to manage templates inside of Forma."
+          "notes": "Forma Bid is actively investigating the best way to support template management."
         },
         {
           "name": "Contacts",
           "status": "not-available",
-          "notes": "We are investigating the best way to manage contacts natively inside of Forma."
+          "notes": "Forma Bid is investigating the best way to support native contact management."
         },
         {
           "name": "Bid History",
           "status": "not-available",
-          "notes": "We are investigating the best way to represent advanced reporting functionality inside of Forma."
+          "notes": "Forma Bid is investigating the best way to surface advanced reporting functionality."
         },
         {
           "name": "Calendar",
           "status": "not-available",
-          "notes": "We are investigating consolidating calendar functionality across our products."
+          "notes": "Forma Bid is investigating how to consolidate calendar functionality across Autodesk products."
         },
         {
           "name": "Analytics",
           "status": "not-available",
-          "notes": "We are investigating the best way to represent advanced reporting functionality inside of Forma."
+          "notes": "Forma Bid is investigating the best way to surface advanced reporting functionality."
         }
       ]
     }
