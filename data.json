@@ -44,13 +44,13 @@
         {
           "name": "Document sharing",
           "status": "available",
-          "notes": "Improved file sharing via Forma Data Management.",
+          "notes": "It's now easier to select multiple bid packages when choosing a folder to share with bidders.",
           "badge": "IMPROVED"
         },
         {
           "name": "Messaging",
           "status": "available",
-          "notes": "Same as BuildingConnected; new ability to filter across messages.",
+          "notes": "Same as BuildingConnected; new ability to filter across messages. Forma Bid does not use Build's Correspondence feature.",
           "badge": "IMPROVED"
         },
         {
