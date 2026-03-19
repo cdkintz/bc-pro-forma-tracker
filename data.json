@@ -1,0 +1,173 @@
+{
+  "title": "BuildingConnected Pro → Forma Bid",
+  "subtitle": "Feature availability tracker",
+  "introduction": "This page tracks the availability of BuildingConnected Pro functionality inside Forma Bid. The majority of project-level functionality is available today, with several improvements. Your existing BuildingConnected data is the same data in Forma — both products can be used simultaneously, and all of your BuildingConnected data is accessible within Forma. Features marked \"Improved\" or \"New\" represent capabilities that go beyond what was available in BuildingConnected Pro.\nNote: the term \"RFP\" is used in place of \"BuildingConnected Project\" to separate bidding efforts from the Forma project.",
+  "tables": [
+    {
+      "id": "project",
+      "title": "Project-Based Functionality",
+      "description": "This is where we focused our initial efforts. We have almost all project based functionality available in Forma.",
+      "features": [
+        {
+          "name": "Creating & managing RFPs (BuildingConnected projects)",
+          "status": "available",
+          "notes": "Same as BuildingConnected."
+        },
+        {
+          "name": "Managing multiple RFPs per project",
+          "status": "available",
+          "notes": "Now you can manage multiple pricing efforts (RFPs) within a single Forma Project, instead of having to rely on multiple disconnected BuildingConnected projects.",
+          "isNew": true,
+          "badge": "NEW"
+        },
+        {
+          "name": "Importing RFPs from templates",
+          "status": "available",
+          "notes": "All data from BuildingConnected available; improvements to import flow include the ability to import bid packages with either/or bidders instead of always importing both."
+        },
+        {
+          "name": "Creating and managing bid packages",
+          "status": "available",
+          "notes": "Same as BuildingConnected."
+        },
+        {
+          "name": "Network profiles",
+          "status": "available",
+          "notes": "Same as BuildingConnected."
+        },
+        {
+          "name": "Sending bid invites and managing bidders",
+          "status": "available",
+          "notes": "Same overall search functionality plus the ability to use natural language search when adding a specific bidder.",
+          "badge": "IMPROVED"
+        },
+        {
+          "name": "Document sharing",
+          "status": "available",
+          "notes": "Improved file sharing via Forma Data Management"
+        },
+        {
+          "name": "Messaging",
+          "status": "available",
+          "notes": "Same as BuildingConnected; new ability to filter across messages."
+        },
+        {
+          "name": "Creating bid forms",
+          "status": "available",
+          "notes": "Same as BuildingConnected; new ability to add item codes to more line items."
+        },
+        {
+          "name": "Viewing, submitting, and printing bids",
+          "status": "available",
+          "notes": "Same as BuildingConnected."
+        },
+        {
+          "name": "TradeTapp Qualification Card",
+          "status": "available",
+          "notes": "Significantly more TradeTapp data availability, including flags.",
+          "badge": "IMPROVED"
+        },
+        {
+          "name": "Bid levelling",
+          "status": "available",
+          "notes": "We're investing heavily in Bid Levelling."
+        },
+        {
+          "name": "RFP Reports",
+          "status": "available",
+          "notes": "Radical expansion of reporting by leveraging Forma Reports to provide custom filters and field selection for all existing BuildingConnected reports.",
+          "badge": "IMPROVED"
+        },
+        {
+          "name": "Sending TT qualification invites",
+          "status": "available",
+          "notes": "Same as BuildingConnected."
+        },
+        {
+          "name": "Sealed Bidding Support",
+          "status": "available",
+          "notes": "Same as BuildingConnected."
+        },
+        {
+          "name": "Creating contracts in Cost Management",
+          "status": "coming-soon",
+          "notes": "New ability to link contracts and their SOVs to multiple budgets."
+        },
+        {
+          "name": "Bidder List Optimization",
+          "status": "not-available",
+          "notes": "Bidder lists can still be optimized in BuildingConnected. Optimization will be a follow on release."
+        },
+        {
+          "name": "Indirect Project Costs",
+          "status": "not-planned",
+          "notes": "Not on the roadmap. If you use this feature, we recommend investigating Forma Estimate."
+        }
+      ]
+    },
+    {
+      "id": "account",
+      "title": "Account & Company Functionality",
+      "description": "Features related to company-wide settings and reporting",
+      "features": [
+        {
+          "name": "Network Suggested Edits",
+          "status": "partial",
+          "notes": "You can see suggested edit information in the profile view, but not yet directly in the UI. For example, a changed phone number will display in the profile, but not yet on bidders list."
+        },
+        {
+          "name": "Profile Management",
+          "status": "coming-soon",
+          "notes": "We're working to provide the ability to manage your profile natively within Forma. You can continue to use BuildingConnected for this functionality."
+        },
+        {
+          "name": "Builder's Network Employee Management",
+          "status": "coming-soon",
+          "notes": "Research is underway. You can continue to use BuildingConnected for this functionality."
+        },
+        {
+          "name": "Builder's Network Office Management",
+          "status": "coming-soon",
+          "notes": "Research is underway. You can continue to use BuildingConnected for this functionality."
+        }
+      ]
+    },
+    {
+      "id": "cross-project",
+      "title": "Cross-Project Functionality",
+      "description": "The below functionality remains functional inside of BuildingConnected. Whether you are using Forma Bid Board or still using BuildingConnected Pro, we are working to find a scalable way to integrate these multi-project pieces of functionality into the greater Forma platform.",
+      "features": [
+        {
+          "name": "Global Network Search",
+          "status": "not-available",
+          "notes": "This refers to the free-form search field in the top navigation in BuildingConnected. We already support network search in the bidder invite flow."
+        },
+        {
+          "name": "Managing templates",
+          "status": "not-available",
+          "notes": "We are actively investigating the best way to manage templates inside of Forma"
+        },
+        {
+          "name": "Contacts",
+          "status": "not-available",
+          "notes": "We are investigating the best way to represent advanced reporting functionality inside of Forma"
+        },
+        {
+          "name": "Bid History",
+          "status": "not-available",
+          "notes": "We are investigating the best way to represent advanced reporting functionality inside of Forma"
+        },
+        {
+          "name": "Calendar",
+          "status": "not-available",
+          "notes": "We are investigating consolidating calendar functionality across our products"
+        },
+        {
+          "name": "Analytics",
+          "status": "not-available",
+          "notes": "We are investigating the best way to represent advanced reporting functionality inside of Forma"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BC Pro → Forma Feature Tracker</title>
+  <style>
+    :root {
+      /* Autodesk Weave palette */
+      --color-bg: #ffffff;
+      --color-surface: #ffffff;
+      --color-text: #3c3c3c;
+      --color-text-secondary: #666666;
+      --color-border: #dcdcdc;
+      --color-available: #6a9728;
+      --color-available-bg: #e7f2d9;
+      --color-partial: #d9730b;
+      --color-partial-bg: #feecd1;
+      --color-in-progress: #0696d7;
+      --color-in-progress-bg: #cdeaf7;
+      --color-not-available: #dd2222;
+      --color-not-available-bg: #faeded;
+      --color-coming-soon: #0696d7;
+      --color-coming-soon-bg: #cdeaf7;
+      --color-not-planned: #999999;
+      --color-not-planned-bg: #eeeeee;
+      --color-accent: #000000;
+      --color-badge-new: #32bcad;
+      --radius: 4px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.08);
+      --shadow-md: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Artifakt Element', Arial, Helvetica, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-header {
+      background: #000000;
+      color: #fff;
+      padding: 48px 32px 40px;
+    }
+
+    .page-header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .page-header h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .page-header p {
+      font-size: 15px;
+      font-weight: 400;
+      color: #FFFF00;
+    }
+
+    .intro {
+      max-width: 960px;
+      margin: -20px auto 0;
+      padding: 20px 28px;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      z-index: 1;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+    }
+
+    .content {
+      max-width: 960px;
+      margin: 32px auto;
+      padding: 0 16px 64px;
+    }
+
+    .table-section {
+      margin-bottom: 48px;
+    }
+
+    .table-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+
+    .table-header h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    .table-header p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+
+    .feature-table {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+
+    .feature-table .thead {
+      display: grid;
+      grid-template-columns: 1fr 170px 1fr;
+      background: #eeeeee;
+      border-bottom: 1px solid var(--color-border);
+      padding: 10px 24px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-secondary);
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 170px 1fr;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--color-border);
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+
+    .feature-row:last-child {
+      border-bottom: none;
+    }
+
+    .feature-row:hover {
+      background: #f8f8f8;
+    }
+
+    .feature-name {
+      font-size: 13px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-text);
+    }
+
+    .badge-new {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      background: var(--color-badge-new);
+      color: #fff;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .status-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-available { background: var(--color-available-bg); color: var(--color-available); }
+    .status-available .dot { background: var(--color-available); }
+
+    .status-partial { background: var(--color-partial-bg); color: var(--color-partial); }
+    .status-partial .dot { background: var(--color-partial); }
+
+    .status-in-progress { background: var(--color-in-progress-bg); color: var(--color-in-progress); }
+    .status-in-progress .dot { background: var(--color-in-progress); }
+
+    .status-not-available { background: var(--color-not-available-bg); color: var(--color-not-available); }
+    .status-not-available .dot { background: var(--color-not-available); }
+
+    .status-coming-soon { background: var(--color-coming-soon-bg); color: var(--color-coming-soon); }
+    .status-coming-soon .dot { background: var(--color-coming-soon); }
+
+    .status-not-planned { background: var(--color-not-planned-bg); color: var(--color-not-planned); }
+    .status-not-planned .dot { background: var(--color-not-planned); }
+
+    .feature-notes {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    .page-footer {
+      background: #000000;
+      color: rgba(255,255,255,0.7);
+      padding: 24px 32px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .page-footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .page-footer a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+    }
+
+    .page-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .save-bar {
+      position: sticky;
+      bottom: 0;
+      background: #1a1a2e;
+      color: #fff;
+      padding: 10px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+    }
+
+    .save-hint {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .save-btn {
+      background: #6a9728;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .save-btn:hover {
+      background: #5a8420;
+    }
+
+    [contenteditable]:hover {
+      outline: 1px dashed rgba(0,0,0,0.15);
+      outline-offset: 2px;
+    }
+
+    [contenteditable]:focus {
+      outline: 2px solid #0696d7;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .status-pill[data-status] {
+      cursor: pointer;
+    }
+
+    .status-pill[data-status]:hover {
+      opacity: 0.8;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      @page {
+        margin: 24px 0 0 0;
+        size: letter;
+      }
+
+      @page :first {
+        margin-top: 0;
+      }
+
+      body { background: #fff; margin: 0; }
+
+      .save-bar { display: none !important; }
+      [contenteditable] { outline: none !important; }
+
+      .page-header {
+        background: #000000 !important;
+        color: #fff !important;
+        padding: 24px 40px 20px;
+      }
+      .page-header h1 { color: #ffffff !important; font-size: 22px; }
+      .page-header p { color: #FFFF00 !important; font-size: 12px; }
+
+      .intro {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 12px 28px;
+        font-size: 10px;
+        line-height: 1.5;
+        border-bottom: 1px solid var(--color-border);
+        position: static;
+        z-index: auto;
+        max-width: none;
+      }
+
+      .content {
+        padding: 12px 40px 0;
+        margin: 0;
+        max-width: none;
+      }
+
+      .page-header-inner {
+        max-width: none;
+      }
+
+      .table-section {
+        margin-bottom: 16px;
+        break-inside: avoid;
+      }
+      .table-header {
+        margin-bottom: 6px;
+        break-after: avoid;
+        break-inside: avoid;
+        padding-top: 8px;
+      }
+      .table-header h2 { font-size: 13px; }
+      .table-header p { font-size: 10px; line-height: 1.4; }
+
+      .feature-table {
+        box-shadow: none;
+        border-radius: 2px;
+        break-before: avoid;
+      }
+      .feature-table .thead {
+        padding: 6px 16px;
+        font-size: 9px;
+        break-after: avoid;
+      }
+      .feature-row {
+        padding: 6px 16px;
+        break-inside: avoid;
+      }
+      .feature-name { font-size: 10px; gap: 4px; }
+      .badge-new { font-size: 7px; padding: 1px 4px; }
+      .status-pill { font-size: 9px; padding: 2px 6px; gap: 4px; }
+      .status-pill .dot { width: 4px; height: 4px; }
+      .feature-notes { font-size: 9px; line-height: 1.3; }
+
+      .page-footer { display: none !important; }
+    }
+
+    @media (max-width: 680px) {
+      .page-header { padding: 32px 20px 28px; }
+      .page-header h1 { font-size: 22px; }
+      .intro { margin: -16px 16px 0; }
+      .content { padding: 0 8px 48px; }
+      .feature-table .thead,
+      .feature-row { grid-template-columns: 1fr 120px; }
+      .feature-notes-col { display: none; }
+      .feature-notes { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1 id="page-title">Loading…</h1>
+      <p id="page-subtitle"></p>
+    </div>
+  </header>
+
+  <div class="intro" id="intro"></div>
+
+  <main class="content" id="content"></main>
+
+  <div class="save-bar" id="save-bar">
+    <span class="save-hint">Click any text to edit inline. Click a status pill to cycle it.</span>
+    <button class="save-btn" id="save-btn" onclick="saveData()">Save data.json</button>
+  </div>
+
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span id="updated-at"></span>
+      <span>&copy; 2026 Autodesk. All rights reserved. <a href="https://www.autodesk.com">www.autodesk.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    let DATA = null;
+
+    const STATUS_ORDER = ['available', 'partial', 'in-progress', 'coming-soon', 'not-available', 'not-planned'];
+    const STATUS_CONFIG = {
+      'available':     { label: 'Available',     cssClass: 'status-available' },
+      'partial':       { label: 'Partial',       cssClass: 'status-partial' },
+      'in-progress':   { label: 'In Progress',   cssClass: 'status-in-progress' },
+      'coming-soon':   { label: 'Coming Soon',   cssClass: 'status-coming-soon' },
+      'not-available': { label: 'Not Available',  cssClass: 'status-not-available' },
+      'not-planned':   { label: 'Not Planned',   cssClass: 'status-not-planned' }
+    };
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function renderStatusPill(status, tableIdx, featIdx) {
+      const config = STATUS_CONFIG[status] || STATUS_CONFIG['not-available'];
+      const interactive = IS_LOCAL ? ` data-table="${tableIdx}" data-feat="${featIdx}" data-status="${status}" onclick="cycleStatus(this)" title="Click to change status"` : '';
+      return `<span class="status-pill ${config.cssClass}"${interactive}><span class="dot"></span>${escapeHtml(config.label)}</span>`;
+    }
+
+    function editable(tableIdx, featIdx, field) {
+      if (!IS_LOCAL) return '';
+      const feat = featIdx !== undefined ? ` data-feat="${featIdx}"` : '';
+      return ` contenteditable="true" data-table="${tableIdx}"${feat} data-field="${field}"`;
+    }
+
+    function renderTable(table, tableIdx) {
+      const rows = table.features.map((f, featIdx) => {
+        const badgeText = f.badge || (f.isNew ? 'New' : '');
+        const newBadge = badgeText ? ` <span class="badge-new"${editable(tableIdx, featIdx, 'badge')}>${escapeHtml(badgeText)}</span>` : '';
+        return `
+          <div class="feature-row">
+            <div class="feature-name"><span${editable(tableIdx, featIdx, 'name')}>${escapeHtml(f.name)}</span>${newBadge}</div>
+            <div>${renderStatusPill(f.status, tableIdx, featIdx)}</div>
+            <div class="feature-notes"${editable(tableIdx, featIdx, 'notes')}>${escapeHtml(f.notes || '')}</div>
+          </div>`;
+      }).join('');
+
+      return `
+        <section class="table-section">
+          <div class="table-header">
+            <h2${editable(tableIdx, undefined, 'title')}>${escapeHtml(table.title)}</h2>
+            <p${editable(tableIdx, undefined, 'description')}>${escapeHtml(table.description || '')}</p>
+          </div>
+          <div class="feature-table">
+            <div class="thead">
+              <div>Feature</div>
+              <div>Status</div>
+              <div class="feature-notes-col">Notes</div>
+            </div>
+            ${rows}
+          </div>
+        </section>`;
+    }
+
+    function cycleStatus(el) {
+      const tableIdx = parseInt(el.dataset.table);
+      const featIdx = parseInt(el.dataset.feat);
+      const current = el.dataset.status;
+      const nextIdx = (STATUS_ORDER.indexOf(current) + 1) % STATUS_ORDER.length;
+      const next = STATUS_ORDER[nextIdx];
+
+      DATA.tables[tableIdx].features[featIdx].status = next;
+
+      const config = STATUS_CONFIG[next];
+      el.dataset.status = next;
+      el.className = `status-pill ${config.cssClass}`;
+      el.innerHTML = `<span class="dot"></span>${escapeHtml(config.label)}`;
+    }
+
+    function collectEdits() {
+      const introEl = document.getElementById('intro');
+      DATA.introduction = introEl.innerText;
+
+      document.querySelectorAll('[contenteditable][data-field]').forEach(el => {
+        const tableIdx = parseInt(el.dataset.table);
+        const featIdx = el.dataset.feat !== undefined ? parseInt(el.dataset.feat) : null;
+        const field = el.dataset.field;
+        const value = el.innerText.trim();
+
+        if (featIdx !== null && !isNaN(featIdx)) {
+          DATA.tables[tableIdx].features[featIdx][field] = value;
+        } else {
+          DATA.tables[tableIdx][field] = value;
+        }
+      });
+    }
+
+    async function saveData() {
+      collectEdits();
+      const btn = document.getElementById('save-btn');
+      btn.textContent = 'Saving…';
+      btn.disabled = true;
+      try {
+        const resp = await fetch('/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(DATA, null, 2)
+        });
+        if (!resp.ok) throw new Error('Save failed');
+        btn.textContent = 'Saved!';
+        btn.style.background = '#32bcad';
+        setTimeout(() => {
+          btn.textContent = 'Save data.json';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 2000);
+      } catch (err) {
+        btn.textContent = 'Save failed';
+        btn.style.background = '#dd2222';
+        setTimeout(() => {
+          btn.textContent = 'Save data.json';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 2000);
+      }
+    }
+
+    async function init() {
+      try {
+        const resp = await fetch('data.json');
+        if (!resp.ok) throw new Error('Failed to load data.json');
+        DATA = await resp.json();
+
+        document.getElementById('page-title').textContent = DATA.title || 'Feature Tracker';
+        document.getElementById('page-subtitle').textContent = DATA.subtitle || '';
+        document.title = DATA.title || 'Feature Tracker';
+
+        const introEl = document.getElementById('intro');
+        introEl.innerHTML = (DATA.introduction || '').split('\n').map(line => {
+          const escaped = escapeHtml(line);
+          return line.trimStart().startsWith('Note:') ? `<em>${escaped}</em>` : escaped;
+        }).join('<br>');
+        if (IS_LOCAL) introEl.setAttribute('contenteditable', 'true');
+
+        document.getElementById('content').innerHTML = DATA.tables.map((t, i) => renderTable(t, i)).join('');
+        document.getElementById('updated-at').textContent = `Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+
+        if (!IS_LOCAL) document.getElementById('save-bar').remove();
+      } catch (err) {
+        document.getElementById('content').innerHTML = `<p style="color:red;text-align:center;padding:48px;">Error loading data: ${escapeHtml(err.message)}</p>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
