@@ -75,7 +75,7 @@
           "notes": "Same as BuildingConnected, with ongoing investment to expand capabilities."
         },
         {
-          "name": "RFP Reports",
+          "name": "Reports",
           "status": "available",
           "notes": "Radical expansion of reporting by leveraging Forma Reports to provide custom filters and field selection for all existing BuildingConnected reports.",
           "badge": "IMPROVED"
@@ -142,37 +142,37 @@
     {
       "id": "cross-project",
       "title": "Cross-Project Functionality",
-      "description": "The below functionality remains available inside BuildingConnected. Forma Bid does not yet support these cross-project capabilities, though they are being evaluated for the broader Forma platform.",
+      "description": "The below functionality remains available inside BuildingConnected. These capabilities are planned for Forma, though they may look different than their BuildingConnected equivalents.",
       "features": [
         {
           "name": "Global Network Search",
           "status": "not-available",
-          "notes": "This refers to the free-form search field in the top navigation in BuildingConnected. Forma Bid already supports network search within the bidder invite flow."
+          "notes": "This refers to the free-form search field in the top navigation in BuildingConnected. Network search is available within the bidder invite flow in Forma Bid."
         },
         {
           "name": "Managing templates",
           "status": "not-available",
-          "notes": "Forma Bid is actively investigating the best way to support template management."
+          "notes": "Planned for Forma. The experience may differ from BuildingConnected."
         },
         {
           "name": "Contacts",
           "status": "not-available",
-          "notes": "Forma Bid is investigating the best way to support native contact management."
+          "notes": "Planned for Forma. The experience may differ from BuildingConnected."
         },
         {
           "name": "Bid History",
           "status": "not-available",
-          "notes": "Forma Bid is investigating the best way to surface advanced reporting functionality."
+          "notes": "Planned for Forma. The experience may differ from BuildingConnected."
         },
         {
           "name": "Calendar",
           "status": "not-available",
-          "notes": "Forma Bid is investigating how to consolidate calendar functionality across Autodesk products."
+          "notes": "Planned for Forma. The experience may differ from BuildingConnected."
         },
         {
           "name": "Analytics",
           "status": "not-available",
-          "notes": "Forma Bid is investigating the best way to surface advanced reporting functionality."
+          "notes": "Planned for Forma. The experience may differ from BuildingConnected."
         }
       ]
     }
